@@ -112,5 +112,148 @@ Section:Button("Get Secret Badge",function()
     end
  end)
 
- -- Create Section on Right Side
+  -- Create Section on Right Side
 local Section2 = FPage:Section("Other Functions","Right")
+
+Section2:Button("Remove Map",function()
+    for i,v in pairs(game.Workspace:GetChildren()) do
+        if v.Name == "Map" then
+            v:Destroy()
+        end
+    end
+ end)
+
+ Section2:Button("Change Old Dirth and Level Map",function()
+    local player = game.Players.LocalPlayer
+    local soccerField = workspace.SoccerFieldParts.SoccerField
+
+    spawn(function()
+        while true do
+            -- Delete Dirt
+            local dirt = soccerField:FindFirstChild("Dirt")
+            if dirt then
+                dirt:Destroy()
+            end
+
+            -- Change SoccerField material and color
+            soccerField.Material = Enum.Material.Granite
+            soccerField.Color = Color3.new(41/255, 99/255, 27/255)
+
+            -- Change Player's Score Level Font to Cartoon font
+            local playerGui = player:WaitForChild("PlayerGui")
+            local startScreen = playerGui:WaitForChild("Start")
+            local scores = startScreen:WaitForChild("Scores")
+            local levelLabel = scores:WaitForChild("Level")
+            levelLabel.Font = Enum.Font.Cartoon
+
+            -- Wait for 1 minute before repeating
+            wait(60)  -- 60 seconds is 1 minute
+        end
+    end)
+end)
+
+Section2:Button("Night Sky",function()
+    while true do
+        game.Lighting.TimeOfDay = "00:00:00"
+        wait(0.1)
+        end	
+end)
+
+Section2:Toggle("Auto Rasteira[Hold Ground Shot]",false,function(arg)
+    if arg then
+        _G.HoldGround = true
+        while _G.HoldGround do
+        wait()
+        game:GetService("Players").LocalPlayer.Backpack.Ground.Value = true
+        end
+        
+            else
+                _G.HoldGround = false
+                wait(1)
+                game:GetService("Players").LocalPlayer.Backpack.Ground.Value = false
+        end
+        end)
+
+Section2:Button("Remove Billiboard Gui",function()
+    for i,v in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
+        if v:IsA("BillboardGui") then
+            v:Destroy()
+        end
+    end
+ end)
+
+ local LPPage = Window:Tab("LocalPlayer") -- Tab Name
+
+ local Section = LPPage:Section("Level XP and Clumsy","Left")
+
+ -- Text , HolderText , Callback
+Section:Textbox("Level","Change Level Value",function(arg)
+    local Targets
+	Targets = tonumber(arg)
+	wait(0.1)
+	local mt = getrawmetatable(game);
+setreadonly(mt, false);
+local old_index = mt.__index;
+mt.__index = function(a, b)
+    if tostring(a) == "PPLevel" or tostring(a) == "Level" then
+        if tostring(b) == "Value" then
+            return Targets;
+        end
+    end
+    return old_index(a, b);
+end
+end) 
+
+Section:Textbox("XP","Change XP Value",function(arg)
+    local Targetz
+	Targetz = tonumber(arg)
+	wait(0.1)
+	local mt = getrawmetatable(game);
+setreadonly(mt, false);
+local old_index = mt.__index;
+mt.__index = function(a, b)
+    if tostring(a) == "XP" then
+        if tostring(b) == "Value" then
+            return Targetz;
+        end
+    end
+    return old_index(a, b);
+end
+end)
+
+Section:Textbox("Clumsy[0.01 and 0.02 for Skills]","Change value",function(arg)
+    settings():GetService("NetworkSettings").IncomingReplicationLag = tonumber(arg)
+end)
+
+  -- Create Section on Right Side
+local Section2 = LPPage:Section("Power Shot","Right")
+
+Section2:Toggle("Infinite Fire[PC]",false,function(arg)
+    if arg then
+        _G.READY = true
+            while _G.READY do
+            wait()
+            for i,v in pairs(game.Players.LocalPlayer:GetDescendants()) do
+                if v.Name == "PowerReady" and v:IsA("BoolValue") then
+                v.Value = true
+        end
+        end
+        end
+            else
+            _G.READY = false
+        end
+        end)
+
+Section2:Toggle("Infinite Fire[Mobile]",false,function(arg)
+    if arg then
+        game:GetService("Players").LocalPlayer.PlayerGui.Start.GamePassMenu.Items.Cooldown.Tick.Visible = true
+            game:GetService("Players").LocalPlayer.PlayerGui.Start.GamePassMenu.Items.Cooldown.Cooldown.Style = "RobloxRoundButton"
+                game:GetService("Players").LocalPlayer.PlayerGui.Start.PowerShot.PowerValue.Value = 0.1
+            else
+            game:GetService("Players").LocalPlayer.PlayerGui.Start.GamePassMenu.Items.Cooldown.Cooldown.Style = "RobloxRoundDefaultButton"
+            game:GetService("Players").LocalPlayer.PlayerGui.Start.GamePassMenu.Items.Cooldown.Tick.Visible = false
+               game:GetService("Players").LocalPlayer.PlayerGui.Start.PowerShot.PowerValue.Value = 0.1
+            end
+        end)
+
+Section2:Label("For Mobile [Active PC and Mobile Infinite Fire!]")
