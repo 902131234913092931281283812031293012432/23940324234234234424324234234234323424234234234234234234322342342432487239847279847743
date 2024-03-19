@@ -159,7 +159,7 @@ Section2:Button("Night Sky",function()
         end	
 end)
 
-Section2:Toggle("Auto Rasteira[Hold Ground Shot]",false,function(arg)
+Section2:Toggle("Auto Hold Ground Shot",false,function(arg)
     if arg then
         _G.HoldGround = true
         while _G.HoldGround do
@@ -255,5 +255,3 @@ Section2:Toggle("Infinite Fire[Mobile]",false,function(arg)
                game:GetService("Players").LocalPlayer.PlayerGui.Start.PowerShot.PowerValue.Value = 0.1
             end
         end)
-
-Section2:Label("For Mobile [Active PC and Mobile Infinite Fire!]")
