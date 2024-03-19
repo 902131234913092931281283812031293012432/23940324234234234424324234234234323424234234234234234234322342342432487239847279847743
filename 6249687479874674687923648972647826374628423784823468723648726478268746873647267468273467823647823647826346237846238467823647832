@@ -1060,3 +1060,141 @@ Section2:Button("React Drible",function()
     end)
     setreadonly(mt,true)
 end)
+
+local KPage = Window:Tab("Kicks") -- Tab Name
+
+local Section = KPage:Section("Kick GK","Left")
+
+Section:Toggle("Save Torso",false,function(arg)
+    if arg then
+        _G.SaveT = true
+        while _G.SaveT do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        local Event = game:GetService("Workspace").FE.Actions.SaveT
+        Event:FireServer(A_1, A_2)
+        end
+            
+            else
+                _G.SaveT = false
+        end
+        end)
+
+Section:Toggle("Save Left Arm",false,function(arg)
+    if arg then
+        _G.SaveLA = true
+        while _G.SaveLA do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        local Event = game:GetService("Workspace").FE.Actions.SaveLA
+        Event:FireServer(A_1, A_2)
+        end
+            
+            else
+                _G.SaveLA = false
+        end
+        end)
+        
+Section:Toggle("Save Right Arm",false,function(arg)
+    if arg then
+        _G.SaveRA = true
+        while _G.SaveRA do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        local Event = game:GetService("Workspace").FE.Actions.SaveRA
+        Event:FireServer(A_1, A_2)
+        end
+            
+            else
+                _G.SaveRA = false
+        end
+        end)
+
+Section:Toggle("Save Right Leg",false,function(arg)
+    if arg then
+        _G.SaveRA = true
+        while _G.SaveRA do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        local Event = game:GetService("Workspace").FE.Actions.SaveRA
+        Event:FireServer(A_1, A_2)
+        end
+            
+            else
+                _G.SaveRA = false
+        end
+        end)
+
+local Section2 = KPage:Section("Kicks","Right")
+
+Section2:Toggle("Kick Power Shot",false,function(arg)
+    if arg then
+        _G.KickP1 = true
+        while _G.KickP1 do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        local A_3 = 65
+        local A_4 = Vector3.new(4000000, 1100, 4000000)
+        local Event = game:GetService("Workspace").FE.Actions.KickP1
+        Event:FireServer(A_1, A_2, A_3, A_4)
+        end
+            
+            else
+                _G.KickP1 = false
+        end
+        end)
+
+Section2:Toggle("Kick Ground Shot",false,function(arg)
+    if arg then
+        _G.KickP2 = true
+        while _G.KickP2 do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        local A_3 = 65
+        local A_4 = Vector3.new(4000000, 1100, 4000000)
+        local Event = game:GetService("Workspace").FE.Actions.KickP2
+        Event:FireServer(A_1, A_2, A_3, A_4)
+        end
+            
+            else
+                _G.KickP2 = false
+        end
+        end)
+
+Section2:Toggle("Kick Tackle",false,function(arg)
+    if arg then
+        _G.Tackle = true
+        while _G.Tackle do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.Head
+        local Event = game:GetService("Workspace").FE.Actions.Tackle
+        Event:FireServer(A_1, A_2)
+        end
+            
+            else
+                _G.Tackle = false
+        end
+        end)
+
+Section2:Toggle("Kick Head",false,function(arg)
+    if arg then
+        _G.Header = true
+        while _G.Header do
+        wait()
+        local A_1 = game:GetService("Workspace").TPSSystem.TPS
+        local A_2 = game:GetService("Players").LocalPlayer.Character.Head
+        local Event = game:GetService("Workspace").FE.Actions.Header
+        Event:FireServer(A_1, A_2)
+        end
+            
+            else
+                _G.Header = false
+        end
+end)
