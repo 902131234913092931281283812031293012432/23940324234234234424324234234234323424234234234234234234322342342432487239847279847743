@@ -723,7 +723,7 @@ Section2:Toggle("Better React 1",false,function()
         end
         end)
 
-local BPage = Window:Tab("Reach") -- Tab Name
+local RPage = Window:Tab("Reach") -- Tab Name
 
 local Section = RPage:Section("Reach","Left")
 
