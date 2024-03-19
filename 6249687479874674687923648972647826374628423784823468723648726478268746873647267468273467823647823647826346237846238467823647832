@@ -636,7 +636,7 @@ Section:Toggle("Rainbow Trail",false,function(arg)
 
 Section:Label("Active Trail For Rainbow")
 
-local Section2 = LPPage:Section("Ball Modifications OP","Right")
+local Section2 = BPage:Section("Ball Modifications OP","Right")
 
 Section2:Button("Ball Size and Crash Ball",function()
     loadstring(game:HttpGet("https://paste.ee/r/HJpvL"))();
